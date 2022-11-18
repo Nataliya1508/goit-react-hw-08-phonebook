@@ -2,8 +2,11 @@
 import { useState } from 'react';
 import { addContactsCreate } from 'redux/contacts/contactsOperations';
 import { getContacts } from 'redux/contacts/contactsSelectors';
+// import { contactsOperations } from 'redux/contacts';
+// import { contactsSelectors } from 'redux/contacts';
 import { useDispatch, useSelector } from 'react-redux';
 import { nanoid } from 'nanoid';
+import Notiflix from 'notiflix';
 import styles from './ContactForm.module.css';
 
 export default function ContactForm() {
@@ -39,15 +42,28 @@ const contacts = useSelector(getContacts);
         e.preventDefault()
 
         const addNewContact = { name, number, id: nanoid() };
-            
-        if (contacts.find(
-            contact => name.toLocaleLowerCase() === contact.name.toLocaleLowerCase())) {
-            alert(`${name} is already in contacts`)
-        } else {
+        const contactFind = contacts.find(
+            contact => name.toLocaleLowerCase() === contact.name.toLocaleLowerCase())
+            // alert(`${name} is already in contacts`)
+        
+        if (!contactFind) {
             dispatch(addContactsCreate(addNewContact))
+            Notiflix.Notify.info('Contact created');
               setName('')
              setNumber('')
-      }
+        }
+        if (contactFind) {
+            Notiflix.Notify.info(`${name} is already in contacts`);
+        }
+            
+    //     if (contacts.find(
+    //         contact => name.toLocaleLowerCase() === contact.name.toLocaleLowerCase())) {
+    //         alert(`${name} is already in contacts`)
+    //     } else {
+    //         dispatch(addContactsCreate(addNewContact))
+    //           setName('')
+    //          setNumber('')
+    //   }
 }
 
 

@@ -11,6 +11,7 @@ import Loader from 'components/Loader/Loader';
 
 
 
+
 export const ContactList = () => { 
   const contacts = useSelector(getContacts);
   const value = useSelector(getFilteredContacts);
@@ -20,7 +21,7 @@ export const ContactList = () => {
 
   useEffect(() => {
     dispatch(fetchContactsCreate());
-  }, [dispatch]);
+  }, [dispatch, contacts, value]);
   
    const filtersContacts = () => {
     return contacts.filter(contact =>

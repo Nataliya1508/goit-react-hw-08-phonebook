@@ -1,55 +1,60 @@
-import { register } from 'redux/auth/authOperations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { register } from 'redux/auth/authOperations';
+
+import styles from 'pages/RegisterPage/RegisterPage.module.css';
 
 const RegisterPage = () => {
-    const dispatch = useDispatch();
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
+  const dispatch = useDispatch();
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
-    const handleChange = ({ target: { name, value } }) => {
-        switch (name) {
-            case 'name':
-                return setName(value);
-            case 'email':
-                return setEmail(value);
-            case 'password':
-                return setPassword(value);
-            default:
-                return;
-        }
-    };
- const handleSubmit = event => {
-        event.preventDefault();
-     dispatch(register({ name, email, password }));
-        setName('')
-        setEmail('');
-        setPassword('');    
-    };
+  const handleChange = ({ target: { name, value } }) => {
+    switch (name) {
+      case 'name':
+        return setName(value);
+      case 'email':
+        return setEmail(value);
+      case 'password':
+        return setPassword(value);
+      default:
+        return;
+    }
+  };
 
-    return (
-       <div>
-      <h1>Registration form</h1>
+  const handleSubmit = e => {
+    e.preventDefault();
+    dispatch(register({ name, email, password }));
+    setName('');
+    setEmail('');
+    setPassword('');
+  };
+
+  return (
+    <div>
+      <h1 className={styles.formTitle}>Registration form</h1>
 
       <form
-        // className={}
+        className={styles.registerForm}
         autoComplete="off"
         onSubmit={handleSubmit}
-            >
-                 <label>
-          <span >Name</span>
+      >
+        <label>
+          <span className={styles.labelName}>Name</span>
           <input
+            className={styles.registerInput}
             type="text"
             name="name"
             value={name}
             onChange={handleChange}
           />
-                </label>
-                
+        </label>
+
         <label>
-          <span >Mail</span>
+          <span className={styles.labelName}>Your mail</span>
           <input
+          className={styles.registerIn}
             type="email"
             name="email"
             value={email}
@@ -58,7 +63,7 @@ const RegisterPage = () => {
         </label>
 
         <label>
-          <span>Password</span>
+          <span className={styles.labelName}>Password</span>
           <input
             type="password"
             name="password"
@@ -67,13 +72,12 @@ const RegisterPage = () => {
           />
         </label>
 
-        <button type="submit">
+        <button className={styles.formBtn} type="submit">
           Register
         </button>
       </form>
     </div>
   );
 };
-
 
 export default RegisterPage;

@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgoit_react_hw_08_phonebook=self.webpackChunkgoit_react_hw_08_phonebook||[]).push([[674],{674:function(e,o,n){n.r(o),n.d(o,{default:function(){return a}});n(791);var t="HomePage_homeTitle__MKDla",r=n(184),a=function(){return(0,r.jsx)("div",{children:(0,r.jsx)("h1",{className:t,children:"Register and create your phonebook"})})}}}]);
+//# sourceMappingURL=674.aa8b4888.chunk.js.map

@@ -1,4 +1,4 @@
-import { registration } from 'redux/auth/authOperations';
+import { register } from 'redux/auth/authOperations';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 
@@ -22,7 +22,7 @@ const RegisterPage = () => {
     };
  const handleSubmit = event => {
         event.preventDefault();
-     dispatch(registration({ name, email, password }));
+     dispatch(register({ name, email, password }));
         setName('')
         setEmail('');
         setPassword('');    

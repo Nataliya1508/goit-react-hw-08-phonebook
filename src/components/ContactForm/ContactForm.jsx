@@ -43,7 +43,7 @@ const contacts = useSelector(getContacts);
 
         const addNewContact = { name, number, id: nanoid() };
         const contactFind = contacts.find(
-            contact => name.toLocaleLowerCase() === contact.name.toLocaleLowerCase())
+            contact => name.toleLowerCase() === contact.name.toLowerCase())
             // alert(`${name} is already in contacts`)
         
         if (!contactFind) {

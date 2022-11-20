@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import AppBar from './AppBar/AppBar';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchCurrentUser } from 'redux/auth/authOperations';
-// import { authSelectors } from 'redux/auth/authSelectors';
+import  getIsFetchingCurrent  from 'redux/auth/authSelectors';
 import { useEffect, lazy, Suspense } from 'react';
 import PrivateRoute from './Route/PrivateRoute';
 import PublicRoute from './Route/PublicRoute';
@@ -23,7 +23,7 @@ const ContactsPage = lazy(() => import('pages/ContactsPage/ContactPage'));
 
 export default function App() {
   const dispatch = useDispatch();
-  const IsFetchingCurrentUser = useSelector(fetchCurrentUser);
+  const IsFetchingCurrentUser = useSelector(getIsFetchingCurrent);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());
@@ -43,7 +43,7 @@ export default function App() {
         {!IsFetchingCurrentUser && (
           <Routes>
             <Route path="/" element={<HomePage />} />
-            <Route path="/registration" exact element={
+            <Route path="/register" exact element={
               <PublicRoute>
                 <RegisterPage />
               </PublicRoute>

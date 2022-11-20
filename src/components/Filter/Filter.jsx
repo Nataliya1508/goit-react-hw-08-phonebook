@@ -9,6 +9,7 @@ import styles from './Filter.module.css';
   export const Filter = () => {
     const dispatch = useDispatch();
     const filterValue = useSelector(getFilteredContacts);
+   
 
     const inputChange = e => {
       const changeValue = e.target.value;

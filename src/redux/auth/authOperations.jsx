@@ -13,7 +13,7 @@ export const token = {
     },
 };
 
-export const registration = createAsyncThunk('auth/registration', async credentials => {
+export const register = createAsyncThunk('auth/register', async credentials => {
     try {
         const { data } = await axios.post('/users/singup', credentials);
         token.set(data.token);
@@ -32,6 +32,7 @@ export const logIn = createAsyncThunk('auth/login', async credentials => {
         return data;
     } catch (error) {
         Notiflix.Notify.failure('Registration error');
+        return error.response.status;
     }
 });
 

@@ -2,8 +2,6 @@ import { useState } from 'react';
 import { contactsOperations } from 'redux/contacts';
 import { contactsSelectors } from 'redux/contacts';
 import { useDispatch, useSelector } from 'react-redux';
-
-// import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import Notiflix from 'notiflix';
 import styles from './ContactForm.module.css';
